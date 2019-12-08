@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'FileMaster.dart';
+import 'LandingPage.dart';
 
 class UserScreen extends StatefulWidget {
   UserScreenState createState() => UserScreenState();
 }
 
-
-
 class UserScreenState extends State {
+  FileMaster _fileWriter = new FileMaster();
 
-  TextEditingController firstNameController = new TextEditingController();
-  TextEditingController lastNameController = new TextEditingController();
-  TextEditingController maasIDController = new TextEditingController();
-  TextEditingController jobTitleController = new TextEditingController();
+  TextEditingController _firstNameController = new TextEditingController();
+  TextEditingController _lastNameController = new TextEditingController();
+  TextEditingController _maasIDController = new TextEditingController();
+  TextEditingController _jobTitleController = new TextEditingController();
 
   int _selfManagementAssessment = 0;
   int _selfPerformanceAssessment = 0;
@@ -23,19 +24,16 @@ class UserScreenState extends State {
   bool _vibeCheck = false;
   bool _dopamineCheck = false;
 
-  String submissionStatus = "";
+  String _submissionStatus = "";
 
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-
         title: "Employee Survey",
-
         theme: ThemeData(
           unselectedWidgetColor: Colors.orange,
           primarySwatch: Colors.blue,
         ),
-
         home: new Scaffold(
           appBar: new AppBar(
             backgroundColor: Color.fromRGBO(51, 51, 51, 1),
@@ -46,9 +44,7 @@ class UserScreenState extends State {
               ),
             ),
           ),
-
           backgroundColor: Colors.orangeAccent,
-
           body: ListView(
             children: <Widget>[
               SizedBox(
@@ -66,76 +62,68 @@ class UserScreenState extends State {
               Padding(
                 padding: const EdgeInsets.all(30),
                 child: TextField(
-                  controller: firstNameController,
+                  controller: _firstNameController,
                   decoration: new InputDecoration(
                       fillColor: Colors.black,
                       filled: true,
-
                       prefixIcon: Icon(
-                        Icons.portrait, color: Colors.orangeAccent,),
-
+                        Icons.portrait,
+                        color: Colors.orangeAccent,
+                      ),
                       hintText: "First Name",
-                      hintStyle: TextStyle(
-                          color: Colors.orangeAccent, fontSize: 20)
-
-                  ),
+                      hintStyle:
+                          TextStyle(color: Colors.orangeAccent, fontSize: 20)),
                   style: TextStyle(color: Colors.orangeAccent, fontSize: 24),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(30),
                 child: TextField(
-                  controller: lastNameController,
+                  controller: _lastNameController,
                   decoration: new InputDecoration(
                       fillColor: Colors.black,
                       filled: true,
-
                       prefixIcon: Icon(
-                        Icons.portrait, color: Colors.orangeAccent,),
-
+                        Icons.portrait,
+                        color: Colors.orangeAccent,
+                      ),
                       hintText: "Last Name",
-                      hintStyle: TextStyle(
-                          color: Colors.orangeAccent, fontSize: 20)
-
-                  ),
+                      hintStyle:
+                          TextStyle(color: Colors.orangeAccent, fontSize: 20)),
                   style: TextStyle(color: Colors.orangeAccent, fontSize: 24),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(30),
                 child: TextField(
-                  controller: maasIDController,
+                  controller: _maasIDController,
                   decoration: new InputDecoration(
                       fillColor: Colors.black,
                       filled: true,
-
                       prefixIcon: Icon(
-                        Icons.contacts, color: Colors.orangeAccent,),
-
+                        Icons.contacts,
+                        color: Colors.orangeAccent,
+                      ),
                       hintText: "Maas ID",
-                      hintStyle: TextStyle(
-                          color: Colors.orangeAccent, fontSize: 20)
-
-                  ),
+                      hintStyle:
+                          TextStyle(color: Colors.orangeAccent, fontSize: 20)),
                   style: TextStyle(color: Colors.orangeAccent, fontSize: 24),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(30),
                 child: TextField(
-                  controller: jobTitleController,
+                  controller: _jobTitleController,
                   decoration: new InputDecoration(
                       fillColor: Colors.black,
                       filled: true,
-
                       prefixIcon: Icon(
-                        Icons.add_to_queue, color: Colors.orangeAccent,),
-
+                        Icons.add_to_queue,
+                        color: Colors.orangeAccent,
+                      ),
                       hintText: "Job Title",
-                      hintStyle: TextStyle(
-                          color: Colors.orangeAccent, fontSize: 20)
-
-                  ),
+                      hintStyle:
+                          TextStyle(color: Colors.orangeAccent, fontSize: 20)),
                   style: TextStyle(color: Colors.orangeAccent, fontSize: 24),
                 ),
               ),
@@ -155,9 +143,7 @@ class UserScreenState extends State {
               Padding(
                 padding: const EdgeInsets.all(30),
                 child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.black
-                  ),
+                  decoration: BoxDecoration(color: Colors.black),
                   child: Column(
                     children: <Widget>[
                       Padding(
@@ -174,46 +160,66 @@ class UserScreenState extends State {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Radio(value: 1,
+                          Radio(
+                            value: 1,
                             groupValue: _selfPerformanceAssessment,
-                            onChanged: _handle_self_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 2,
+                            onChanged: _handleSelfAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 2,
                             groupValue: _selfPerformanceAssessment,
-                            onChanged: _handle_self_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 3,
+                            onChanged: _handleSelfAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 3,
                             groupValue: _selfPerformanceAssessment,
-                            onChanged: _handle_self_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 4,
+                            onChanged: _handleSelfAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 4,
                             groupValue: _selfPerformanceAssessment,
-                            onChanged: _handle_self_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 5,
+                            onChanged: _handleSelfAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 5,
                             groupValue: _selfPerformanceAssessment,
-                            onChanged: _handle_self_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 6,
+                            onChanged: _handleSelfAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 6,
                             groupValue: _selfPerformanceAssessment,
-                            onChanged: _handle_self_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 7,
+                            onChanged: _handleSelfAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 7,
                             groupValue: _selfPerformanceAssessment,
-                            onChanged: _handle_self_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 8,
+                            onChanged: _handleSelfAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 8,
                             groupValue: _selfPerformanceAssessment,
-                            onChanged: _handle_self_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 9,
+                            onChanged: _handleSelfAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 9,
                             groupValue: _selfPerformanceAssessment,
-                            onChanged: _handle_self_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 10,
+                            onChanged: _handleSelfAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 10,
                             groupValue: _selfPerformanceAssessment,
-                            onChanged: _handle_self_assesment,
-                            activeColor: Colors.orangeAccent,)
+                            onChanged: _handleSelfAssessment,
+                            activeColor: Colors.orangeAccent,
+                          )
                         ],
                       ),
                     ],
@@ -223,9 +229,7 @@ class UserScreenState extends State {
               Padding(
                 padding: const EdgeInsets.all(30),
                 child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.black
-                  ),
+                  decoration: BoxDecoration(color: Colors.black),
                   child: Column(
                     children: <Widget>[
                       Padding(
@@ -242,46 +246,66 @@ class UserScreenState extends State {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Radio(value: 1,
+                          Radio(
+                            value: 1,
                             groupValue: _selfSatisfactionAssessment,
-                            onChanged: _handle_satisfaction_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 2,
+                            onChanged: _handleSatisfactionAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 2,
                             groupValue: _selfSatisfactionAssessment,
-                            onChanged: _handle_satisfaction_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 3,
+                            onChanged: _handleSatisfactionAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 3,
                             groupValue: _selfSatisfactionAssessment,
-                            onChanged: _handle_satisfaction_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 4,
+                            onChanged: _handleSatisfactionAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 4,
                             groupValue: _selfSatisfactionAssessment,
-                            onChanged: _handle_satisfaction_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 5,
+                            onChanged: _handleSatisfactionAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 5,
                             groupValue: _selfSatisfactionAssessment,
-                            onChanged: _handle_satisfaction_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 6,
+                            onChanged: _handleSatisfactionAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 6,
                             groupValue: _selfSatisfactionAssessment,
-                            onChanged: _handle_satisfaction_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 7,
+                            onChanged: _handleSatisfactionAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 7,
                             groupValue: _selfSatisfactionAssessment,
-                            onChanged: _handle_satisfaction_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 8,
+                            onChanged: _handleSatisfactionAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 8,
                             groupValue: _selfSatisfactionAssessment,
-                            onChanged: _handle_satisfaction_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 9,
+                            onChanged: _handleSatisfactionAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 9,
                             groupValue: _selfSatisfactionAssessment,
-                            onChanged: _handle_satisfaction_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 10,
+                            onChanged: _handleSatisfactionAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 10,
                             groupValue: _selfSatisfactionAssessment,
-                            onChanged: _handle_satisfaction_assesment,
-                            activeColor: Colors.orangeAccent,)
+                            onChanged: _handleSatisfactionAssessment,
+                            activeColor: Colors.orangeAccent,
+                          )
                         ],
                       ),
                     ],
@@ -291,9 +315,7 @@ class UserScreenState extends State {
               Padding(
                 padding: const EdgeInsets.all(30),
                 child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.black
-                  ),
+                  decoration: BoxDecoration(color: Colors.black),
                   child: Column(
                     children: <Widget>[
                       Padding(
@@ -311,46 +333,66 @@ class UserScreenState extends State {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Radio(value: 1,
+                          Radio(
+                            value: 1,
                             groupValue: _selfManagementAssessment,
-                            onChanged: _handle_management_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 2,
+                            onChanged: _handleManagementAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 2,
                             groupValue: _selfManagementAssessment,
-                            onChanged: _handle_management_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 3,
+                            onChanged: _handleManagementAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 3,
                             groupValue: _selfManagementAssessment,
-                            onChanged: _handle_management_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 4,
+                            onChanged: _handleManagementAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 4,
                             groupValue: _selfManagementAssessment,
-                            onChanged: _handle_management_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 5,
+                            onChanged: _handleManagementAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 5,
                             groupValue: _selfManagementAssessment,
-                            onChanged: _handle_management_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 6,
+                            onChanged: _handleManagementAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 6,
                             groupValue: _selfManagementAssessment,
-                            onChanged: _handle_management_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 7,
+                            onChanged: _handleManagementAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 7,
                             groupValue: _selfManagementAssessment,
-                            onChanged: _handle_management_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 8,
+                            onChanged: _handleManagementAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 8,
                             groupValue: _selfManagementAssessment,
-                            onChanged: _handle_management_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 9,
+                            onChanged: _handleManagementAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 9,
                             groupValue: _selfManagementAssessment,
-                            onChanged: _handle_management_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 10,
+                            onChanged: _handleManagementAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 10,
                             groupValue: _selfManagementAssessment,
-                            onChanged: _handle_management_assesment,
-                            activeColor: Colors.orangeAccent,)
+                            onChanged: _handleManagementAssessment,
+                            activeColor: Colors.orangeAccent,
+                          )
                         ],
                       ),
                     ],
@@ -360,9 +402,7 @@ class UserScreenState extends State {
               Padding(
                 padding: const EdgeInsets.all(30),
                 child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.black
-                  ),
+                  decoration: BoxDecoration(color: Colors.black),
                   child: Column(
                     children: <Widget>[
                       Padding(
@@ -380,46 +420,66 @@ class UserScreenState extends State {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Radio(value: 1,
+                          Radio(
+                            value: 1,
                             groupValue: _selfDifficultyAssessment,
-                            onChanged: _handle_difficulty_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 2,
+                            onChanged: _handleDifficultyAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 2,
                             groupValue: _selfDifficultyAssessment,
-                            onChanged: _handle_difficulty_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 3,
+                            onChanged: _handleDifficultyAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 3,
                             groupValue: _selfDifficultyAssessment,
-                            onChanged: _handle_difficulty_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 4,
+                            onChanged: _handleDifficultyAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 4,
                             groupValue: _selfDifficultyAssessment,
-                            onChanged: _handle_difficulty_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 5,
+                            onChanged: _handleDifficultyAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 5,
                             groupValue: _selfDifficultyAssessment,
-                            onChanged: _handle_difficulty_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 6,
+                            onChanged: _handleDifficultyAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 6,
                             groupValue: _selfDifficultyAssessment,
-                            onChanged: _handle_difficulty_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 7,
+                            onChanged: _handleDifficultyAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 7,
                             groupValue: _selfDifficultyAssessment,
-                            onChanged: _handle_difficulty_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 8,
+                            onChanged: _handleDifficultyAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 8,
                             groupValue: _selfDifficultyAssessment,
-                            onChanged: _handle_difficulty_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 9,
+                            onChanged: _handleDifficultyAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 9,
                             groupValue: _selfDifficultyAssessment,
-                            onChanged: _handle_difficulty_assesment,
-                            activeColor: Colors.orangeAccent,),
-                          Radio(value: 10,
+                            onChanged: _handleDifficultyAssessment,
+                            activeColor: Colors.orangeAccent,
+                          ),
+                          Radio(
+                            value: 10,
                             groupValue: _selfDifficultyAssessment,
-                            onChanged: _handle_difficulty_assesment,
-                            activeColor: Colors.orangeAccent,)
+                            onChanged: _handleDifficultyAssessment,
+                            activeColor: Colors.orangeAccent,
+                          )
                         ],
                       ),
                     ],
@@ -444,25 +504,20 @@ class UserScreenState extends State {
                 child: Container(
                   alignment: Alignment.center,
                   height: 60,
-                  decoration: BoxDecoration(
-                      color: Colors.black
-                  ),
+                  decoration: BoxDecoration(color: Colors.black),
                   child: Text(
                     'Please Report If You Have Experienced Any Of The Following:',
                     style: TextStyle(
                         fontWeight: FontWeight.normal,
                         fontSize: 19,
-                        color: Colors.orangeAccent
-                    ),
+                        color: Colors.orangeAccent),
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(30),
                 child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.black
-                  ),
+                  decoration: BoxDecoration(color: Colors.black),
                   child: Column(
                     children: <Widget>[
                       Padding(
@@ -472,8 +527,7 @@ class UserScreenState extends State {
                             Text(
                               "I Was Made Uncomfortable During The Daily Behavioral Brain Scan",
                               style: TextStyle(
-                                  color: Colors.orangeAccent, fontSize: 24
-                              ),
+                                  color: Colors.orangeAccent, fontSize: 24),
                               textAlign: TextAlign.center,
                             )
                           ],
@@ -484,9 +538,7 @@ class UserScreenState extends State {
                         children: <Widget>[
                           Text(
                             "Yes",
-                            style: TextStyle(
-                                color: Colors.orange
-                            ),
+                            style: TextStyle(color: Colors.orange),
                           ),
                           Checkbox(
                             value: _brainScanCheck,
@@ -500,9 +552,7 @@ class UserScreenState extends State {
                           ),
                           Text(
                             "No",
-                            style: TextStyle(
-                                color: Colors.orange
-                            ),
+                            style: TextStyle(color: Colors.orange),
                           ),
                           Checkbox(
                             value: !_brainScanCheck,
@@ -523,9 +573,7 @@ class UserScreenState extends State {
               Padding(
                 padding: const EdgeInsets.all(30),
                 child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.black
-                  ),
+                  decoration: BoxDecoration(color: Colors.black),
                   child: Column(
                     children: <Widget>[
                       Padding(
@@ -535,8 +583,7 @@ class UserScreenState extends State {
                             Text(
                               "I Have Been Aproached By A Manager Droid In A Violent Manner",
                               style: TextStyle(
-                                  color: Colors.orangeAccent, fontSize: 24
-                              ),
+                                  color: Colors.orangeAccent, fontSize: 24),
                               textAlign: TextAlign.center,
                             )
                           ],
@@ -547,9 +594,7 @@ class UserScreenState extends State {
                         children: <Widget>[
                           Text(
                             "Yes",
-                            style: TextStyle(
-                                color: Colors.orange
-                            ),
+                            style: TextStyle(color: Colors.orange),
                           ),
                           Checkbox(
                             value: _droidCheck,
@@ -563,9 +608,7 @@ class UserScreenState extends State {
                           ),
                           Text(
                             "No",
-                            style: TextStyle(
-                                color: Colors.orange
-                            ),
+                            style: TextStyle(color: Colors.orange),
                           ),
                           Checkbox(
                             value: !_droidCheck,
@@ -586,9 +629,7 @@ class UserScreenState extends State {
               Padding(
                 padding: const EdgeInsets.all(30),
                 child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.black
-                  ),
+                  decoration: BoxDecoration(color: Colors.black),
                   child: Column(
                     children: <Widget>[
                       Padding(
@@ -598,8 +639,7 @@ class UserScreenState extends State {
                             Text(
                               "My Dopamine Drip Malfunctioned And I Could Not Perform At Max Capacity",
                               style: TextStyle(
-                                  color: Colors.orangeAccent, fontSize: 25
-                              ),
+                                  color: Colors.orangeAccent, fontSize: 25),
                               textAlign: TextAlign.center,
                             )
                           ],
@@ -610,9 +650,7 @@ class UserScreenState extends State {
                         children: <Widget>[
                           Text(
                             "Yes",
-                            style: TextStyle(
-                                color: Colors.orange
-                            ),
+                            style: TextStyle(color: Colors.orange),
                           ),
                           Checkbox(
                             value: _dopamineCheck,
@@ -626,9 +664,7 @@ class UserScreenState extends State {
                           ),
                           Text(
                             "No",
-                            style: TextStyle(
-                                color: Colors.orange
-                            ),
+                            style: TextStyle(color: Colors.orange),
                           ),
                           Checkbox(
                             value: !_dopamineCheck,
@@ -649,9 +685,7 @@ class UserScreenState extends State {
               Padding(
                 padding: const EdgeInsets.all(30),
                 child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.black
-                  ),
+                  decoration: BoxDecoration(color: Colors.black),
                   child: Column(
                     children: <Widget>[
                       Padding(
@@ -661,8 +695,7 @@ class UserScreenState extends State {
                             Text(
                               "I Was Uncertain About My Place In The Larger Context Of The Universe",
                               style: TextStyle(
-                                  color: Colors.orangeAccent, fontSize: 24
-                              ),
+                                  color: Colors.orangeAccent, fontSize: 24),
                               textAlign: TextAlign.center,
                             )
                           ],
@@ -673,9 +706,7 @@ class UserScreenState extends State {
                         children: <Widget>[
                           Text(
                             "Yes",
-                            style: TextStyle(
-                                color: Colors.orange
-                            ),
+                            style: TextStyle(color: Colors.orange),
                           ),
                           Checkbox(
                             value: _vibeCheck,
@@ -689,9 +720,7 @@ class UserScreenState extends State {
                           ),
                           Text(
                             "No",
-                            style: TextStyle(
-                                color: Colors.orange
-                            ),
+                            style: TextStyle(color: Colors.orange),
                           ),
                           Checkbox(
                             value: !_vibeCheck,
@@ -717,7 +746,27 @@ class UserScreenState extends State {
                 padding: const EdgeInsets.only(
                     top: 30, bottom: 20, left: 170, right: 170),
                 child: RaisedButton(
-                  onPressed: _attemptSubmission,
+                  onPressed: () {
+                    if (_firstNameController.text != "" &&
+                        _lastNameController.text != "" &&
+                        _maasIDController.text != "" &&
+                        _jobTitleController.text != "" &&
+                        _selfDifficultyAssessment != 0 &&
+                        _selfSatisfactionAssessment != 0 &&
+                        _selfPerformanceAssessment != 0 &&
+                        _selfManagementAssessment != 0) {
+                      String submission = createSubmission();
+                      _fileWriter.writeFile(submission);
+                      Route route = MaterialPageRoute(
+                          builder: (context) => LandingPage());
+                      Navigator.push(context, route);
+                    } else {
+                      setState(() {
+                        _submissionStatus =
+                            "Please Complete Every Form Before Submission";
+                      });
+                    }
+                  },
                   color: Colors.black,
                   elevation: 8,
                   child: Stack(
@@ -747,7 +796,7 @@ class UserScreenState extends State {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 30),
                   child: Text(
-                    submissionStatus,
+                    _submissionStatus,
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -758,48 +807,71 @@ class UserScreenState extends State {
               ),
             ],
           ),
-        )
-    );
+        ));
   }
 
-  void _attemptSubmission() {
-    if (firstNameController.text != "" && lastNameController.text != ""
-        && maasIDController.text != "" && jobTitleController.text != ""
-        && _selfDifficultyAssessment != 0 && _selfSatisfactionAssessment != 0
-        && _selfPerformanceAssessment != 0 && _selfManagementAssessment != 0) {
-      submitResults();
-    }
-    else {
-      setState(() {
-        submissionStatus = "Please Complete Every Form Before Submission";
-      });
-    }
+  String createSubmission() {
+    String shipBack = "__START__" +
+        "\n" +
+        "first name: " +
+        _firstNameController.text +
+        "\n" +
+        "last name: " +
+        _lastNameController.text +
+        '\n' +
+        "id: " +
+        _maasIDController.text +
+        '\n' +
+        "job title: " +
+        _jobTitleController.text +
+        '\n' +
+        "management assessment: " +
+        _selfManagementAssessment.toString() +
+        '\n' +
+        "performance assessment: " +
+        _selfPerformanceAssessment.toString() +
+        '\n' +
+        "satisfaction assessment: " +
+        _selfSatisfactionAssessment.toString() +
+        '\n' +
+        "difficulty assessment: " +
+        _selfDifficultyAssessment.toString() +
+        '\n' +
+        "brain check: " +
+        _brainScanCheck.toString() +
+        '\n' +
+        "droid check: " +
+        _droidCheck.toString() +
+        '\n' +
+        "vibe check: " +
+        _vibeCheck.toString() +
+        '\n' +
+        "dopamine check: " +
+        _dopamineCheck.toString() +
+        '\n' +
+        "__END__";
+    return shipBack;
   }
 
-  void submitResults(){
-
-  }
-
-
-  void _handle_difficulty_assesment(int val){
+  void _handleDifficultyAssessment(int val) {
     setState(() {
       _selfDifficultyAssessment = val;
     });
   }
 
-  void _handle_satisfaction_assesment(int val){
+  void _handleSatisfactionAssessment(int val) {
     setState(() {
       _selfSatisfactionAssessment = val;
     });
   }
 
-  void _handle_management_assesment(int val){
+  void _handleManagementAssessment(int val) {
     setState(() {
       _selfManagementAssessment = val;
     });
   }
 
-  void _handle_self_assesment(int val){
+  void _handleSelfAssessment(int val) {
     setState(() {
       _selfPerformanceAssessment = val;
     });
