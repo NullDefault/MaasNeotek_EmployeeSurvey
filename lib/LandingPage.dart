@@ -49,8 +49,7 @@ class LandingPage extends StatelessWidget {
               child: RaisedButton(
                 onPressed: () { Navigator.pushNamed(context, "UserScreen"); },
                 textColor: Colors.orangeAccent,
-                color: Colors.grey,
-                highlightColor: Colors.yellowAccent[100],
+                color: Colors.black,
                 elevation: 10,
                 child: Stack(
                   children: <Widget>[
@@ -83,9 +82,8 @@ class LandingPage extends StatelessWidget {
               height: 100,
               child: RaisedButton(
                 onPressed: () { Navigator.pushNamed(context, "AdminLogin"); },
-                textColor: Colors.deepOrangeAccent,
-                color: Colors.grey,
-                highlightColor: Colors.redAccent,
+                textColor: Colors.orangeAccent,
+                color: Colors.black,
                 elevation: 10,
                 child: Stack(
                   children: <Widget>[
@@ -153,8 +151,7 @@ class LandingPage extends StatelessWidget {
                 child: RaisedButton(
                   onPressed: () { Navigator.pushNamed(context, "UserScreen"); },
                   textColor: Colors.orangeAccent,
-                  color: Colors.grey,
-                  highlightColor: Colors.yellowAccent[100],
+                  color: Colors.black,
                   elevation: 10,
                   child: Stack(
                     children: <Widget>[
@@ -187,9 +184,8 @@ class LandingPage extends StatelessWidget {
                 height: 100,
                 child: RaisedButton(
                   onPressed: () { Navigator.pushNamed(context, "AdminLogin"); },
-                  textColor: Colors.deepOrangeAccent,
-                  color: Colors.grey,
-                  highlightColor: Colors.redAccent,
+                  textColor: Colors.orangeAccent,
+                  color: Colors.black,
                   elevation: 10,
                   child: Stack(
                     children: <Widget>[

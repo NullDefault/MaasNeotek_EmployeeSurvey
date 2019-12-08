@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'AnimatedWave.dart';
 
 class AdminScreen extends StatelessWidget {
   @override
