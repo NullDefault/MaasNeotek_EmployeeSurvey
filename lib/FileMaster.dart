@@ -20,6 +20,7 @@ class FileMaster{
     return file.writeAsString('$text\r\n', mode: FileMode.append);
   }
 
+
   Future<File> deleteFile() async{
     final file = await _localFile;
     return file.delete();

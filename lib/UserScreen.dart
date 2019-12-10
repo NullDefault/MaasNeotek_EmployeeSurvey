@@ -62,6 +62,7 @@ class UserScreenState extends State {
               Padding(
                 padding: const EdgeInsets.all(30),
                 child: TextField(
+                  keyboardType: TextInputType.text,
                   controller: _firstNameController,
                   decoration: new InputDecoration(
                       fillColor: Colors.black,
@@ -79,6 +80,7 @@ class UserScreenState extends State {
               Padding(
                 padding: const EdgeInsets.all(30),
                 child: TextField(
+                  keyboardType: TextInputType.text,
                   controller: _lastNameController,
                   decoration: new InputDecoration(
                       fillColor: Colors.black,
@@ -96,6 +98,7 @@ class UserScreenState extends State {
               Padding(
                 padding: const EdgeInsets.all(30),
                 child: TextField(
+                  keyboardType: TextInputType.number,
                   controller: _maasIDController,
                   decoration: new InputDecoration(
                       fillColor: Colors.black,
@@ -113,6 +116,7 @@ class UserScreenState extends State {
               Padding(
                 padding: const EdgeInsets.all(30),
                 child: TextField(
+                  keyboardType: TextInputType.text,
                   controller: _jobTitleController,
                   decoration: new InputDecoration(
                       fillColor: Colors.black,
@@ -757,9 +761,7 @@ class UserScreenState extends State {
                         _selfManagementAssessment != 0) {
                       String submission = createSubmission();
                       _fileWriter.writeFile(submission);
-                      Route route = MaterialPageRoute(
-                          builder: (context) => LandingPage());
-                      Navigator.push(context, route);
+                      Navigator.pop(context);
                     } else {
                       setState(() {
                         _submissionStatus =
@@ -811,45 +813,31 @@ class UserScreenState extends State {
   }
 
   String createSubmission() {
-    String shipBack = "__START__" +
-        "\n" +
-        "first name: " +
+    String shipBack =
         _firstNameController.text +
-        "\n" +
-        "last name: " +
+        "%" +
         _lastNameController.text +
-        '\n' +
-        "id: " +
+        '%' +
         _maasIDController.text +
-        '\n' +
-        "job title: " +
+        '%' +
         _jobTitleController.text +
-        '\n' +
-        "management assessment: " +
+        '%' +
         _selfManagementAssessment.toString() +
-        '\n' +
-        "performance assessment: " +
+        '%' +
         _selfPerformanceAssessment.toString() +
-        '\n' +
-        "satisfaction assessment: " +
+        '%' +
         _selfSatisfactionAssessment.toString() +
-        '\n' +
-        "difficulty assessment: " +
+        '%' +
         _selfDifficultyAssessment.toString() +
-        '\n' +
-        "brain check: " +
+        '%' +
         _brainScanCheck.toString() +
-        '\n' +
-        "droid check: " +
+        '%' +
         _droidCheck.toString() +
-        '\n' +
-        "vibe check: " +
+        "%" +
         _vibeCheck.toString() +
-        '\n' +
-        "dopamine check: " +
+        "%" +
         _dopamineCheck.toString() +
-        '\n' +
-        "__END__";
+        "\n";
     return shipBack;
   }
 
