@@ -4,32 +4,28 @@ import 'UserScreen.dart';
 import 'AnimatedWave.dart';
 
 class LandingPage extends StatelessWidget {
-
-
-
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-        title: 'Landing Page',
-        home: new Scaffold(
-          backgroundColor: Color.fromRGBO(51, 51, 51, 1),
-          body: OrientationBuilder(
-            builder: (context, orientation) {
-              return MediaQuery.of(context).orientation == Orientation.portrait
-                  ? _buildNarrowLayout(context)
-                  : _buildWideLayout(context);
-            },
-          ),
+      title: 'Landing Page',
+      home: new Scaffold(
+        backgroundColor: Color.fromRGBO(51, 51, 51, 1),
+        body: OrientationBuilder(
+          builder: (context, orientation) {
+            return MediaQuery.of(context).orientation == Orientation.portrait
+                ? _buildNarrowLayout(context)
+                : _buildWideLayout(context);
+          },
         ),
+      ),
       routes: {
         'AdminLogin': (context) => AdminLogin(),
         'UserScreen': (context) => UserScreen(),
-    },
+      },
     );
   }
 
-
-  Widget _buildNarrowLayout(BuildContext context){
+  Widget _buildNarrowLayout(BuildContext context) {
     return Stack(
       children: <Widget>[
         Column(
@@ -47,7 +43,9 @@ class LandingPage extends StatelessWidget {
               minWidth: 300,
               height: 100,
               child: RaisedButton(
-                onPressed: () { Navigator.pushNamed(context, "UserScreen"); },
+                onPressed: () {
+                  Navigator.pushNamed(context, "UserScreen");
+                },
                 textColor: Colors.orangeAccent,
                 color: Colors.black,
                 elevation: 10,
@@ -81,7 +79,9 @@ class LandingPage extends StatelessWidget {
               minWidth: 200,
               height: 100,
               child: RaisedButton(
-                onPressed: () { Navigator.pushNamed(context, "AdminLogin"); },
+                onPressed: () {
+                  Navigator.pushNamed(context, "AdminLogin");
+                },
                 textColor: Colors.orangeAccent,
                 color: Colors.black,
                 elevation: 10,
@@ -128,10 +128,9 @@ class LandingPage extends StatelessWidget {
     );
   }
 
-  Widget _buildWideLayout(BuildContext context){
-    return Stack(
-      children: <Widget>[
-        Row(
+  Widget _buildWideLayout(BuildContext context) {
+    return Stack(children: <Widget>[
+      Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Column(
@@ -149,7 +148,9 @@ class LandingPage extends StatelessWidget {
                 minWidth: 300,
                 height: 100,
                 child: RaisedButton(
-                  onPressed: () { Navigator.pushNamed(context, "UserScreen"); },
+                  onPressed: () {
+                    Navigator.pushNamed(context, "UserScreen");
+                  },
                   textColor: Colors.orangeAccent,
                   color: Colors.black,
                   elevation: 10,
@@ -183,7 +184,9 @@ class LandingPage extends StatelessWidget {
                 minWidth: 200,
                 height: 100,
                 child: RaisedButton(
-                  onPressed: () { Navigator.pushNamed(context, "AdminLogin"); },
+                  onPressed: () {
+                    Navigator.pushNamed(context, "AdminLogin");
+                  },
                   textColor: Colors.orangeAccent,
                   color: Colors.black,
                   elevation: 10,
@@ -214,30 +217,28 @@ class LandingPage extends StatelessWidget {
           )
         ],
       ),
-        onBottom(
-          AnimatedWave(
-            height: 80,
-            speed: 0.7,
-            color: Colors.orangeAccent,
-          ),
+      onBottom(
+        AnimatedWave(
+          height: 80,
+          speed: 0.7,
+          color: Colors.orangeAccent,
         ),
-        onBottom(
-          AnimatedWave(
-            height: 65,
-            speed: 0.7,
-            color: Color.fromRGBO(51, 51, 51, 1),
-          ),
+      ),
+      onBottom(
+        AnimatedWave(
+          height: 65,
+          speed: 0.7,
+          color: Color.fromRGBO(51, 51, 51, 1),
         ),
-      ]
-    );
+      ),
+    ]);
   }
 
-  onBottom(Widget child) => Positioned.fill(                                    // This properly places the waves within the stack
-    child: Align(
-      alignment: Alignment.bottomCenter,
-      child: child,
-    ),
-  );
-
+  onBottom(Widget child) => Positioned.fill(
+        // This properly places the waves within the stack
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: child,
+        ),
+      );
 }
-

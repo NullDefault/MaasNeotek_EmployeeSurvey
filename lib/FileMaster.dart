@@ -2,9 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 
-
-class FileMaster{
-
+class FileMaster {
   Future<String> get _localPath async {
     final directory = await getApplicationDocumentsDirectory();
     return directory.path;
@@ -20,8 +18,7 @@ class FileMaster{
     return file.writeAsString('$text\r\n', mode: FileMode.append);
   }
 
-
-  Future<File> deleteFile() async{
+  Future<File> deleteFile() async {
     final file = await _localFile;
     return file.delete();
   }
@@ -35,7 +32,4 @@ class FileMaster{
       return '';
     }
   }
-
-
 }
-

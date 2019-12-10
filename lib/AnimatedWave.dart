@@ -30,7 +30,8 @@ class AnimatedWave extends StatelessWidget {
   }
 }
 
-class CurvePainter extends CustomPainter {                                      // This is the class that paints the waves described in the class above
+class CurvePainter extends CustomPainter {
+  // This is the class that paints the waves described in the class above
   final double value;
   final Color color;
 

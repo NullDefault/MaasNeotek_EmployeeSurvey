@@ -7,7 +7,6 @@ class AdminScreen extends StatefulWidget {
 }
 
 class _AdminScreenState extends State {
-
   FileMaster _fileReader = FileMaster();
   List<Widget> _userResponses = new List<Widget>();
 
@@ -49,7 +48,8 @@ class _AdminScreenState extends State {
             body: Column(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 10),
+                  padding: const EdgeInsets.only(
+                      left: 30, right: 30, top: 20, bottom: 10),
                   child: Container(
                     decoration: BoxDecoration(color: Colors.black),
                     child: Column(
@@ -76,9 +76,11 @@ class _AdminScreenState extends State {
                           child: ListView(
                             children: <Widget>[
                               Padding(
-                                padding: const EdgeInsets.only(bottom: 20, top: 10, left: 40),
+                                padding: const EdgeInsets.only(
+                                    bottom: 20, top: 10, left: 40),
                                 child: Text(
-                                  "Average Management Rating: "+_managementRatingAVG.toStringAsFixed(1),
+                                  "Average Management Rating: " +
+                                      _managementRatingAVG.toStringAsFixed(1),
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
@@ -87,9 +89,11 @@ class _AdminScreenState extends State {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(bottom: 20, left: 40),
+                                padding:
+                                    const EdgeInsets.only(bottom: 20, left: 40),
                                 child: Text(
-                                  "Average Self Assessed Performance Rating: "+_performanceRatingAVG.toStringAsFixed(1),
+                                  "Average Self Assessed Performance Rating: " +
+                                      _performanceRatingAVG.toStringAsFixed(1),
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
@@ -98,9 +102,11 @@ class _AdminScreenState extends State {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(bottom: 20, left: 40),
+                                padding:
+                                    const EdgeInsets.only(bottom: 20, left: 40),
                                 child: Text(
-                                  "Average Satisfaction Rating: "+_satisfactionRatingAVG.toStringAsFixed(1),
+                                  "Average Satisfaction Rating: " +
+                                      _satisfactionRatingAVG.toStringAsFixed(1),
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
@@ -109,9 +115,11 @@ class _AdminScreenState extends State {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(bottom: 20, left: 40),
+                                padding:
+                                    const EdgeInsets.only(bottom: 20, left: 40),
                                 child: Text(
-                                  "Average Position Difficulty Rating: "+_difficultyRatingAVG.toStringAsFixed(1),
+                                  "Average Position Difficulty Rating: " +
+                                      _difficultyRatingAVG.toStringAsFixed(1),
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
@@ -120,9 +128,13 @@ class _AdminScreenState extends State {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(bottom: 20, left: 40),
+                                padding:
+                                    const EdgeInsets.only(bottom: 20, left: 40),
                                 child: Text(
-                                  "Employees Comfortable With Brain Scan: "+_comfortableWithBrainScan.toStringAsFixed(3)+ "%",
+                                  "Employees Comfortable With Brain Scan: " +
+                                      _comfortableWithBrainScan
+                                          .toStringAsFixed(3) +
+                                      "%",
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
@@ -131,9 +143,12 @@ class _AdminScreenState extends State {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(bottom: 20, left: 40),
+                                padding:
+                                    const EdgeInsets.only(bottom: 20, left: 40),
                                 child: Text(
-                                  "Employes Who Get Along With Manager Droids: "+_getAlongWithDroids.toStringAsFixed(3)+"%",
+                                  "Employes Who Get Along With Manager Droids: " +
+                                      _getAlongWithDroids.toStringAsFixed(3) +
+                                      "%",
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
@@ -142,9 +157,13 @@ class _AdminScreenState extends State {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(bottom: 20, left: 40),
+                                padding:
+                                    const EdgeInsets.only(bottom: 20, left: 40),
                                 child: Text(
-                                  "Existentially Unstable Employees: "+_existentiallyUnstable.toStringAsFixed(3)+"%",
+                                  "Existentially Unstable Employees: " +
+                                      _existentiallyUnstable
+                                          .toStringAsFixed(3) +
+                                      "%",
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
@@ -153,9 +172,12 @@ class _AdminScreenState extends State {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(bottom: 20, left: 40),
+                                padding:
+                                    const EdgeInsets.only(bottom: 20, left: 40),
                                 child: Text(
-                                  "Employees Resistant To Dopamine Manipulation: "+_dopamineResistant.toStringAsFixed(3)+"%",
+                                  "Employees Resistant To Dopamine Manipulation: " +
+                                      _dopamineResistant.toStringAsFixed(3) +
+                                      "%",
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
@@ -183,7 +205,6 @@ class _AdminScreenState extends State {
   }
 
   Future<List<Widget>> _loadUserResponses() async {
-
     String responses;
     var entryArray = [];
     List<Widget> shipBack = new List<Widget>();
@@ -202,9 +223,14 @@ class _AdminScreenState extends State {
       }
     }
 
-    int mTemp = 0; int pTemp = 0; int sTemp = 0; int dTemp = 0;
-    double bTemp = 0; double drTemp = 0; double eTemp = 0; double doTemp = 0;
-
+    int mTemp = 0;
+    int pTemp = 0;
+    int sTemp = 0;
+    int dTemp = 0;
+    double bTemp = 0;
+    double drTemp = 0;
+    double eTemp = 0;
+    double doTemp = 0;
 
     for (int j = 0; j < entryArray.length; j++) {
       var currentEntry = entryArray[j];
@@ -231,8 +257,6 @@ class _AdminScreenState extends State {
       eTemp += vibeCheck == 'Yes' ? 1 : 0;
       doTemp += dopamineCheck == 'Yes' ? 1 : 0;
 
-
-
       Widget newWidget = _FadeIn(
         delay: 1.5,
         child: Padding(
@@ -244,7 +268,8 @@ class _AdminScreenState extends State {
                 Row(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
+                      padding:
+                          const EdgeInsets.only(left: 20, top: 20, bottom: 10),
                       child: Text(
                         firstName,
                         style: TextStyle(
@@ -255,7 +280,8 @@ class _AdminScreenState extends State {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 5, top: 20, right: 2, bottom: 10),
+                      padding: const EdgeInsets.only(
+                          left: 5, top: 20, right: 2, bottom: 10),
                       child: Text(
                         lastName,
                         style: TextStyle(
@@ -270,7 +296,8 @@ class _AdminScreenState extends State {
                 Row(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(left: 40, top: 0, right: 2, bottom: 10),
+                      padding: const EdgeInsets.only(
+                          left: 40, top: 0, right: 2, bottom: 10),
                       child: Text(
                         jobTitle,
                         style: TextStyle(
@@ -282,7 +309,8 @@ class _AdminScreenState extends State {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 10, top: 0, right: 2, bottom: 10),
+                      padding: const EdgeInsets.only(
+                          left: 10, top: 0, right: 2, bottom: 10),
                       child: Text(
                         "MAAS ID: " + maasID,
                         style: TextStyle(
@@ -301,7 +329,8 @@ class _AdminScreenState extends State {
                 Row(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(left:20, top: 20, right: 2, bottom: 10),
+                      padding: const EdgeInsets.only(
+                          left: 20, top: 20, right: 2, bottom: 10),
                       child: Text(
                         "Management Rating: " + managementRating,
                         style: TextStyle(
@@ -312,7 +341,8 @@ class _AdminScreenState extends State {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left:20, top: 20, right: 2, bottom: 10),
+                      padding: const EdgeInsets.only(
+                          left: 20, top: 20, right: 2, bottom: 10),
                       child: Text(
                         "Performance Rating: " + performanceRating,
                         style: TextStyle(
@@ -327,7 +357,8 @@ class _AdminScreenState extends State {
                 Row(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(left:20, right: 2, bottom: 10),
+                      padding:
+                          const EdgeInsets.only(left: 20, right: 2, bottom: 10),
                       child: Text(
                         "Satisfaction Rating: " + satisfactionRating,
                         style: TextStyle(
@@ -338,7 +369,8 @@ class _AdminScreenState extends State {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left:20, right: 2, bottom: 10),
+                      padding:
+                          const EdgeInsets.only(left: 20, right: 2, bottom: 10),
                       child: Text(
                         "Difficulty Rating: " + difficultyRating,
                         style: TextStyle(
@@ -357,7 +389,8 @@ class _AdminScreenState extends State {
                 Row(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(left: 20, top: 20, bottom: 5),
+                      padding:
+                          const EdgeInsets.only(left: 20, top: 20, bottom: 5),
                       child: Text(
                         "Uncomfortable With Brain Scan: " + brainScanCheck,
                         style: TextStyle(
@@ -372,7 +405,8 @@ class _AdminScreenState extends State {
                 Row(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(left: 20, top: 5, bottom: 5),
+                      padding:
+                          const EdgeInsets.only(left: 20, top: 5, bottom: 5),
                       child: Text(
                         "Doesn't Get Along With Droids: " + droidCheck,
                         style: TextStyle(

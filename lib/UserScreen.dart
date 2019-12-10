@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'FileMaster.dart';
-import 'LandingPage.dart';
 
 class UserScreen extends StatefulWidget {
   UserScreenState createState() => UserScreenState();
@@ -813,8 +812,7 @@ class UserScreenState extends State {
   }
 
   String createSubmission() {
-    String shipBack =
-        _firstNameController.text +
+    String shipBack = _firstNameController.text +
         "%" +
         _lastNameController.text +
         '%' +

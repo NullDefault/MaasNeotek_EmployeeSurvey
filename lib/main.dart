@@ -8,14 +8,12 @@ class KioskApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      return new MaterialApp(
-        title: appTitle,
-        initialRoute: 'landingPage',
-        routes: {
-          'landingPage': (context) => LandingPage(),
-        },
-      );
-    }
+    return new MaterialApp(
+      title: appTitle,
+      initialRoute: 'landingPage',
+      routes: {
+        'landingPage': (context) => LandingPage(),
+      },
+    );
+  }
 }
-
-
